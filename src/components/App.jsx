@@ -9,7 +9,7 @@ import { Footer } from "./Footer/Footer";
 import { Header } from "./Header/Header";
 import { Main } from "./Main/Main";
 import { OurBenefits } from "./OurBenefits/OurBenefits";
-import { ProductSize } from "./ProductSize/ProductSize";
+// import { ProductSize } from "./ProductSize/ProductSize";
 import { Proposal } from "./Proposal/Proposal";
 import { Questions } from "./Questions/Questions";
 import { Reviews } from "./Reviews/Reviews";
@@ -31,7 +31,7 @@ export const App = () => {
    <Main/>
    <Proposal/>
    <AboutProduct/>
-   <ProductSize/>
+   {/* <ProductSize/> */}
   <ChooseColor id="chooseColor" modalOpen={handleModalOpen}/>
    <Reviews/>
     <OurBenefits/>

@@ -1,8 +1,7 @@
 import './Proposal.css';
 import { Link } from 'react-scroll';
 import CountTimeDown from "../CountTimeDown/CountTimeDown";
-let price = 3678;
-let todayPrice = 2989;
+
 
 
 export const Proposal = () => {
@@ -14,7 +13,8 @@ export const Proposal = () => {
             src={require('../../Images/proposal1.jpg')}
             alt="Дівчина в жилетці"
           />
-          <p className="proposal-item-text">Добре зігріє та<br/>не завадить бути стильною</p>
+          <p className="proposal-item-text">3 моделі, 4 довжини,
+<br/>Обирайте Ваш варіант</p>
         </li>
         <li className="proposal-item">
           {' '}
@@ -33,13 +33,9 @@ export const Proposal = () => {
           <p className="proposal-item-text">Увага до деталей виробу<br/>для вашого комфорту</p>
         </li>
       </ul>
-      <div className="proposal-allPrice">
-        <img
-          src={require('../../Images/prices1.png')}
-          alt="Шаблон ціни тижня"
-        />
-        <span className="proposal-price price-text">{price} ГРН</span>
-        <span className="proposal-todayPrice price-text">{todayPrice} ГРН</span>
+      <div className="proposal-discount">
+       
+       <span className='proposal-discount-text'>Знижка -30% на топову лінійку зимових та демісезонних пуховиків!</span>
       </div>
       <h3 className='proposal-text'>Пропозиція діє ще:</h3>
       <CountTimeDown/>
