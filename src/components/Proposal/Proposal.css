@@ -1,0 +1,116 @@
+.proposal-section {
+  margin-top: 400px;
+padding-bottom: 50px;
+}
+.proposal-list {
+  display: flex;
+  padding: 10px 10px 20px 10px;
+  gap: 120px;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.proposal-item {
+  position: relative;
+  z-index: 3;
+}
+.proposal-item-text{
+  margin-top: 30px;
+  font-size: 25px;
+  text-indent: 2ch;
+}
+.proposal-item::before {
+  display: block;
+  content: '';
+  transform: translate(-5%, -3%);
+  background-color: #eedec7;
+  width: 95%;
+  height: 110%;
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  padding: 0 25px;
+}
+.proposal-allPrice {
+  position: relative;
+  margin: 100px auto 80px auto;
+  width:320px;
+}
+.proposal-price {
+  position: absolute;
+  bottom: 18px;
+  left: 60px;
+  text-decoration: line-through;
+}
+.proposal-todayPrice {
+  position: absolute;
+  right: 55px;
+  bottom: 18px;
+}
+.price-text {
+
+  color: antiquewhite;
+}
+.proposal-img{
+  border: 7px solid white;
+   width: 320px;
+}
+.proposal-text{
+    text-align: center;
+    font-size: 28px;
+    margin-top: 30px;
+}
+.proposal-button{
+    display: block;
+    margin: 70px auto 50px auto;
+    width: 300px;
+    height: 50px;
+    background-color: #f5c231;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+@media only screen and (min-width: 480px) {
+  .proposal-allPrice {
+    margin-top: 100px;
+    width: 470px;
+  }
+  .proposal-price {
+    bottom: 30px;
+    left: 80px;
+  }
+  .proposal-todayPrice {
+    right: 75px;
+    bottom:  25px;
+  }
+  .price-text {
+   font-size: 26px;
+  }
+}
+@media only screen and (min-width: 1020px) {
+  .proposal-section {
+    margin-top: 180px;
+  }
+  .proposal-list {
+  
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding:200px 30px 200px 30px;
+  }
+  .proposal-allPrice {
+    margin-top: 70px;
+   width: 800px;
+  }
+  .proposal-price {
+    bottom: 65px;
+    left: 160px;
+  }
+  .proposal-todayPrice {
+    right: 150px;
+    bottom:  50px;
+  }
+  .price-text {
+   font-size: 35px;
+  }
+}
