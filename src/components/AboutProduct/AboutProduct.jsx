@@ -29,11 +29,7 @@ export const AboutProduct = () => {
           <h4 className='aboutProduct-listTitle'>Манжети</h4>
           <p className='aboutProduct-listText'>М'якенькі та затишні манжети які своїм розміром, зручним положенням та теплом трохи навіть замінять рукавички.</p>
         </li>
-        <li className='aboutProduct-item'>
-          <img className='about-img' src={require('../../Images/aboutProduct6.jpg')} alt="Жилетки на вішаку" />
-          <h4 className='aboutProduct-listTitle'>Капюшон</h4>
-          <p className='aboutProduct-listText'>Великий відстібний капюшон що заховає від неочікованого дощу мінливої погоди.</p>
-        </li>
+       
       </ul>
     </section>
   );

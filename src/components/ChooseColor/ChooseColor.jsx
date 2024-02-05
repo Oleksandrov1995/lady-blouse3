@@ -1,4 +1,4 @@
-import { productsData } from 'data/productsData';
+import { productsTypeData } from 'data/productsTypeData';
 import './ChooseColor.css';
 import { useEffect, useState } from 'react';
 
@@ -11,7 +11,7 @@ export const ChooseColor = ({ modalOpen }) => {
 
   const handleAddProduct = async (productId, productSize) => {
    
-    const selectedProduct = productsData.find(
+    const selectedProduct = productsTypeData.find(
       product => productId === product.id
       
     );
@@ -42,7 +42,7 @@ export const ChooseColor = ({ modalOpen }) => {
     <section id="chooseColor" className="product">
       <h2>Обери свій колір</h2>
       <ul className="product-list">
-        {productsData.map(product => (
+        {productsTypeData.map(product => (
           <li className="product-item" key={product.id}>
             <img className="product-img" src={product.imageSrc} alt="Жилет" />
             <img

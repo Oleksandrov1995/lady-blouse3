@@ -1,0 +1,97 @@
+.product {
+    padding: 70px 0 70px 0;
+    text-align: center;
+  }
+  .product-list {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 80px;
+  }
+  .product-img {
+    width: 300px;
+  }
+  .discount-img {
+    width: 45px;
+    margin-top: 15px;
+  }
+  .product-item {
+    width: 300px;
+    position: relative;
+    margin-bottom: 50px;
+  }
+  .discount-text {
+    position: absolute;
+    left: 4px;
+    bottom: 130px;
+    color: white;
+  }
+  .todayPrice-text {
+    position: absolute;
+    bottom: 143px;
+    right: 5px;
+  }
+  .productPrice-text {
+    text-decoration: line-through;
+    position: absolute;
+    bottom: 120px;
+    right: 5px;
+  }
+  .productTodayPrice-text {
+    position: absolute;
+    bottom: 95px;
+    right: 5px;
+    color: #ff671e;
+    text-decoration-line: underline;
+    font-weight: bold;
+  }
+  .product-type {
+    position: absolute;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration-line: overline;
+    bottom: 140px;
+    left: 60px;
+  }
+  .product-colorText{
+    position: absolute;
+    bottom: 95px;
+    left: 0px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .color-dots {
+    position: absolute;
+    bottom: 80px;
+    display: flex; 
+    flex-wrap: nowrap;
+  }
+  
+  .color-dot {
+    width: 11px;
+    height: 11px;
+    border: 1px solid black;
+    border-radius: 50%; 
+    margin-right: 6px; 
+  }
+
+  .product-button {
+    margin-top: 70px;
+    width: 300px;
+    height: 50px;
+    background-color: #f5c231;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  @media only screen and (min-width: 1300px) {
+  
+      .product-list {
+          display: flex;
+          flex-direction: row;
+         justify-content: center;
+         gap: 30px;
+        
+        }
+  }
