@@ -2,7 +2,7 @@ import { AboutProduct } from './AboutProduct/AboutProduct';
 import './App.css';
 import { useState } from 'react';
 
-import { ChooseColor } from './ChooseColor/ChooseColor';
+
 import { Contacts } from './Contacts/Contacts';
 import { Feadback } from './Feadback/Feadback';
 import { Footer } from './Footer/Footer';
@@ -13,19 +13,19 @@ import { OurBenefits } from './OurBenefits/OurBenefits';
 import { Proposal } from './Proposal/Proposal';
 import { Questions } from './Questions/Questions';
 import { Reviews } from './Reviews/Reviews';
-import { ShoppingList } from './ShoppingList/ShoppingList';
-import { ShoppingListButton } from './ShoppingListButton/ShoppingListButton';
+// import { ShoppingList } from './ShoppingList/ShoppingList';
+// import { ShoppingListButton } from './ShoppingListButton/ShoppingListButton';
 import { ChooseType } from './ChooseType/ChooseType';
 import { ProductCard } from './ProductCard/ProductCard';
 
 export const App = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const handleModalOpen = () => {
-    setModalOpen(true);
-  };
-  const handleModalClose = () => {
-    setModalOpen(false);
-  };
+  // const [modalOpen, setModalOpen] = useState(false);
+  // const handleModalOpen = () => {
+  //   setModalOpen(true);
+  // };
+  // const handleModalClose = () => {
+  //   setModalOpen(false);
+  // };
   
   const [productCardModalOpen, setProductCardModalOpen] = useState(false);
   const handleProductCardModalOpen = () => {
