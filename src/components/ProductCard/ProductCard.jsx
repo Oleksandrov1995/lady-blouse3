@@ -86,7 +86,8 @@ export const ProductCard = ({ productCardModalOpen, productCardModalClose, produ
 )}
 <button>Оформити замовлення</button>
 <p>{selectedProduct && selectedProduct.aboutTitle}</p>
-<p>{selectedProduct && selectedProduct.aboutText}</p>
+<div>{selectedProduct && selectedProduct.aboutText}</div>
+   
         </Box>
       </Modal>
     </div>
