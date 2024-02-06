@@ -32,6 +32,7 @@ export const ProductCard = ({ productCardModalOpen, productCardModalClose, produ
             onClick={handleModalClose}
             className="modalButtonClose"
           />
+          
      <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -59,6 +60,9 @@ export const ProductCard = ({ productCardModalOpen, productCardModalClose, produ
           </SwiperSlide>
         ))}
       </Swiper>
+      <p>{selectedProduct?.price} грн</p>
+          <p>{selectedProduct?.todayPrice} грн</p>
+      <form action="">
       {selectedProduct && (
   <div>
     <label htmlFor="Size">Виберіть колір:</label>
@@ -85,9 +89,12 @@ export const ProductCard = ({ productCardModalOpen, productCardModalClose, produ
   </div>
 )}
 <button>Оформити замовлення</button>
+</form>
 <p>{selectedProduct && selectedProduct.aboutTitle}</p>
 <div>{selectedProduct && selectedProduct.aboutText}</div>
-   
+<p>Заміри виробу</p>
+   <div>{selectedProduct?.sizeTable}</div>
+   <button>Обрати колір</button>
         </Box>
       </Modal>
     </div>

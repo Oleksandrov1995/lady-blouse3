@@ -17,6 +17,22 @@
   margin-left: auto;
   cursor: pointer;
 }
+.productSize-table{
+  margin: 20px auto 10px auto;
+  background-color: #ffffff;
+  padding: 3px;
+}
+.productSize-bolt{
+   font-weight: bold;
+   font-size: 25px;
+   
+}
+th, td {
+ font-size: 13.5px;
+  padding: 6px 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
 
 @media only screen and (min-width: 1020px) {
   .modalBox {
