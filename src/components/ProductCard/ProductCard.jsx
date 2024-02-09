@@ -3,36 +3,23 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
+import { useParams } from 'react-router-dom';
 import './ProductCard.css';
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+
 import { productsTypeData } from 'data/productsTypeData';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
+// import { AiOutlineCloseCircle } from 'react-icons/ai';
 
-export const ProductCard = ({ productCardModalOpen, productCardModalClose, productId }) => {
-  const handleModalClose = () => {
-    productCardModalClose();
-      };
-      const selectedProduct = productsTypeData.find(product => productId === product.id);
+export const ProductCard = ({ modalOpen }) => {
+ 
+  const { id } = useParams();
 
+      const selectedProduct = productsTypeData.find(product => id === product.id);
+   
   return (
     <div>
-      <Modal
-        open={productCardModalOpen}
-        onClose={handleModalClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        className={'modal'}
-      >
-        <Box className={'modalBox'}>
-          <AiOutlineCloseCircle
-            size={30}
-            onClick={handleModalClose}
-            className="modalButtonClose"
-          />
-          
+      <h3>{selectedProduct.type}</h3>
+             
      <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -88,15 +75,15 @@ export const ProductCard = ({ productCardModalOpen, productCardModalClose, produ
     </select>
   </div>
 )}
-<button>Оформити замовлення</button>
 </form>
+<button onClick={modalOpen}>Оформити замовлення</button>
+
 <p>{selectedProduct && selectedProduct.aboutTitle}</p>
 <div>{selectedProduct && selectedProduct.aboutText}</div>
 <p>Заміри виробу</p>
    <div>{selectedProduct?.sizeTable}</div>
    <button>Обрати колір</button>
-        </Box>
-      </Modal>
+      
     </div>
   );
 };

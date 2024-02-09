@@ -1,12 +1,7 @@
 import { productsTypeData } from 'data/productsTypeData';
 import './ChooseType.css';
-
-export const ChooseType = ({productCardModalOpen, onProductSelect}) => {
-
-  const handleOpenModalCard = productId => {
-    onProductSelect(productId);
-    productCardModalOpen();
-  };
+import { Link} from 'react-router-dom';
+export const ChooseType = () => {
 
   return (
     <section id="chooseColor" className="product">
@@ -32,13 +27,10 @@ export const ChooseType = ({productCardModalOpen, onProductSelect}) => {
               ))}</ul>
             
            
-            <button
-             onClick={() => handleOpenModalCard(product.id)}
-              className="product-button"
-              type="button"
-            >
-              Обрати колір
-            </button>
+            <Link className="product-link" to={`/product/${product.id}`} >
+             Обрати колір
+            </Link>
+           
           </li>
         ))}
       </ul>
