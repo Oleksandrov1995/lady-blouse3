@@ -1,7 +1,6 @@
 .proposal-section {
   margin-top: 400px;
-padding-bottom: 50px;
-
+  padding-bottom: 50px;
 }
 .proposal-list {
   display: flex;
@@ -16,7 +15,7 @@ padding-bottom: 50px;
   position: relative;
   z-index: 3;
 }
-.proposal-item-text{
+.proposal-item-text {
   margin-top: 30px;
   font-size: 25px;
   text-indent: 2ch;
@@ -34,41 +33,49 @@ padding-bottom: 50px;
   padding: 0 25px;
 }
 .proposal-discount {
-  display:block;
+  position: relative;
+  display: block;
   background-image: url('../../Images/prices1.png');
-  background-size: cover; 
+  background-size: cover;
   background-position: center;
-   margin: 100px auto 50px auto;
- min-height: 80px;
- width: 320px;
-text-align: center;
+  margin: 100px auto 50px auto;
+  min-height: 80px;
+  width: 320px;
+  text-align: center;
 }
-.proposal-discount-text{
-  display:inline-block;
+.proposal-discountPercent {
+  position: absolute;
+  font-size: 80px;
+  font-style: oblique;
+  color: #67080a;
+  transform: translate(40%, -65%);
+}
+.proposal-discount-text {
+  display: inline-block;
   margin: 0 auto;
   max-width: 280px;
-  padding-top: 5px;
- font-weight: bold;
+  padding-top: 15px;
+  font-weight: bold;
+  color: #67080a;
 }
 
-
-.proposal-img{
+.proposal-img {
   border: 7px solid white;
-   width: 320px;
+  width: 320px;
 }
-.proposal-text{
-    text-align: center;
-    font-size: 28px;
-    margin-top: 30px;
+.proposal-text {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 30px;
 }
-.proposal-button{
-    display: block;
-    margin: 70px auto 50px auto;
-    width: 300px;
-    height: 50px;
-    background-color: #f5c231;
-    font-size: 26px;
-    font-weight: bold;
+.proposal-button {
+  display: block;
+  margin: 70px auto 50px auto;
+  width: 300px;
+  height: 50px;
+  background-color: #f5c231;
+  font-size: 26px;
+  font-weight: bold;
 }
 
 @media only screen and (min-width: 480px) {
@@ -77,18 +84,19 @@ text-align: center;
     width: 470px;
   }
   .proposal-discount {
-
-   width: 480px;
-   margin: 70px auto 50px auto;
+    width: 480px;
+    margin: 110px auto 50px auto;
   }
-  .proposal-discount-text{
-  
+  .proposal-discountPercent {
+    transform: translate(80%, -65%);
+  }
+  .proposal-discount-text {
     max-width: 380px;
     font-size: 24px;
   }
- 
+
   .price-text {
-   font-size: 26px;
+    font-size: 26px;
   }
 }
 @media only screen and (min-width: 1020px) {
@@ -96,21 +104,21 @@ text-align: center;
     margin-top: 85px;
   }
   .proposal-list {
-  
     flex-direction: row;
     flex-wrap: nowrap;
-    padding:200px 30px 200px 30px;
+    padding: 200px 30px 200px 30px;
   }
   .proposal-discount {
-
     width: 800px;
-   }
-   .proposal-discount-text{
-   
-     max-width: 380px;
-     font-size: 24px;
-   }
+  }
+  .proposal-discountPercent {
+    transform: translate(170%, -65%);
+  }
+  .proposal-discount-text {
+    max-width: 380px;
+    font-size: 24px;
+  }
   .price-text {
-   font-size: 35px;
+    font-size: 35px;
   }
 }

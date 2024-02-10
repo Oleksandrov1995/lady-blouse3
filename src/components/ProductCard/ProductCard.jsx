@@ -11,7 +11,12 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { productsTypeData } from 'data/productsTypeData';
 
 export const ProductCard = ({ modalOpen }) => {
+ 
   const { id } = useParams();
+  useEffect(() => {
+   
+    window.scrollTo(0, 0);
+  }, []);
   const selectedProduct = productsTypeData.find(product => id === product.id);
 
   const [productColor, setProductColor] = useState({});
@@ -55,20 +60,23 @@ export const ProductCard = ({ modalOpen }) => {
     const updatedProducts = [...storedProducts, productToAdd];
     setProducts(updatedProducts);
     localStorage.setItem('products', JSON.stringify(updatedProducts));
-
+ 
     modalOpen();
   };
+
+ 
 
   useEffect(() => {
     localStorage.setItem('products', JSON.stringify(products));
   }, [products]);
 
   return (
-    <div>
-      <Link className="backLink" to={`/`}>
+   
+      
+      <div className="productCard">
+        <Link className="backLink" to={`/`}>
         <ArrowBackIcon fontSize="large" />
       </Link>
-      <div className="productCard">
         <h3 className="productType">Куртка "{selectedProduct.type}"</h3>
 
         <Swiper
@@ -77,6 +85,7 @@ export const ProductCard = ({ modalOpen }) => {
           pagination={{
             clickable: true,
           }}
+         
           navigation={true}
           loop={true}
           modules={[Autoplay, Navigation]}
@@ -95,13 +104,13 @@ export const ProductCard = ({ modalOpen }) => {
               </SwiperSlide>
             ))}
         </Swiper>
-        <p className="price">{selectedProduct?.price} грн</p>
+        
         <p className="priceText">
-          Ціна сьогодні:<span className="todayPrice">{price} грн</span>
+          Ціна сьогодні:<span className="price">{selectedProduct?.price} грн</span><span className="todayPrice">{price} грн</span>
         </p>
         <div className="productOptions">
           {selectedProduct && (
-            <div>
+            <div className='productCardContainer'>
               <label htmlFor="Size">Оберіть колір:</label>
               <select
                 className="optionSelect"
@@ -138,6 +147,7 @@ export const ProductCard = ({ modalOpen }) => {
             </div>
           )}
         </div>
+       
         <button className="productCardButton" onClick={handleAddPRoduct}>
           Оформити замовлення
         </button>
@@ -148,12 +158,14 @@ export const ProductCard = ({ modalOpen }) => {
         <div className="aboutText">
           {selectedProduct && selectedProduct.aboutText}
         </div>
+        <div className="sizesTable">
         <p className="sizeTitle">Заміри виробу</p>
         <div>{selectedProduct?.sizeTable}</div>
+        </div>
         <button className="productCardButton" onClick={handleAddPRoduct}>
           Оформити замовлення
         </button>
       </div>
-    </div>
+    
   );
 };

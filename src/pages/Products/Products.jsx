@@ -11,7 +11,7 @@ export const Products = () => {
        <div>
           <ShoppingList modalOpen={modalOpen} modalClose={handleModalClose} />
           <ShoppingListButton modalOpen={handleModalOpen} />
-          <ProductCard modalOpen={handleModalOpen} />
+          <ProductCard modalOpen={handleModalOpen}   />
        </div>
     );
  };
