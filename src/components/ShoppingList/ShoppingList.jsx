@@ -24,7 +24,6 @@ export const ShoppingList = ({ modalOpen, modalClose }) => {
   const [question, setQuestion] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
   const [isFailure, setIsFailure] = useState(false);
-  const [selectedSizes, setSelectedSizes] = useState({});
 
   useEffect(() => {
     const products = JSON.parse(localStorage.getItem('products'));
@@ -33,7 +32,6 @@ export const ShoppingList = ({ modalOpen, modalClose }) => {
       setProducts(products);
     }
   }, [modalOpen]);
-
 
   useEffect(() => {
     if (isSuccess) {
@@ -48,52 +46,26 @@ export const ShoppingList = ({ modalOpen, modalClose }) => {
       setTimeout(() => setIsFailure(false), 4000);
     }
   }, [isFailure]);
-  
 
-  const handleDeleteProduct = (productId, productSize) => {
-    const updatedProducts = products.map(product => {
-      if (product.id === productId && product.size === productSize) {
-        return null;
-      }
-    
-      return product;
-    }).filter(Boolean);
-    setProducts(updatedProducts);
+  const handleDeleteProduct = productId => {
+    const updatedProducts = products.filter(
+      product => product.id !== productId
+    );
+    return setProducts(updatedProducts);
   };
-  
 
-  const handleSizeChange = (productId, productSize, selectedSize) => {
-    
-    const updatedSelectedSizes = {
-      ...selectedSizes,
-      [productId]: selectedSize
-    };
-    setSelectedSizes(updatedSelectedSizes);
-    
-    const updatedProducts = products.map(product => {
-      if (product.id === productId && product.size === productSize) {
-        return { ...product, size: selectedSize };
-      }
-      return product;
-    });
-    setProducts(updatedProducts);
-  };
-  
-
-  const handleAddToCart = (productId, productSize) => {
+  const handleAddToCart = productId => {
     const updatedProducts = products.map(product =>
-      product.id === productId && product.size === productSize
+      product.id === productId
         ? { ...product, quantity: (product.quantity || 1) + 1 }
         : product
     );
     setProducts(updatedProducts);
   };
-
-
-  const handleRemoveFromCart = (productId, productSize) => {
+  const handleRemoveFromCart = productId => {
     const updatedProducts = products
       .map(product =>
-        product.id === productId && product.size === productSize
+        product.id === productId
           ? { ...product, quantity: Math.max((product.quantity || 0) - 1, 0) }
           : product
       )
@@ -101,16 +73,11 @@ export const ShoppingList = ({ modalOpen, modalClose }) => {
 
     return setProducts(updatedProducts);
   };
+  const totalAmount = products.reduce((total, product) => {
+    const productTotal = (product.price || 0) * (product.quantity || 1);
+    return total + productTotal;
+  }, 0);
 
- const totalAmount = products.reduce((total, product) => {
-  let productTotal = (product.todayPrice || 0) * (product.quantity || 1);
-
-  if (product.size === '52-54/100' || product.size === '52-54/120') {
-    productTotal += 210 * (product.quantity || 1);
-  }
-
-  return total + productTotal;
-}, 0);
   const handleFormSubmit = async e => {
     e.preventDefault();
     const phoneRegex = /^\d{10}$/;
@@ -120,7 +87,10 @@ export const ShoppingList = ({ modalOpen, modalClose }) => {
     }
     sendMessage(`Нова заявка! Хочу Куртку!!!
       \nТовар: ${products.map(
-        product => `${product.color} ${product.size} (${product.quantity})`
+        product => `${product.type};
+        Розмір: ${product.size};
+        Колір: ${product.color};
+        Кількість: (${product.quantity})-----0`
       )}
       \nЗагальна сума: ${totalAmount}
       \nІм'я: ${name}
@@ -168,27 +138,13 @@ export const ShoppingList = ({ modalOpen, modalClose }) => {
           <h2 className="shoppingList-title">Ваше замовлення:</h2>
           {products &&
             products.map(product => (
-              <div key={product.id+product.size} className="shoppingList-product">
-             
+              <div key={product.id} className="shoppingList-product">
+            <p>Куртка "{product.type}"</p>
                 <p className="shoppingList-productName">
-                  Колір куртки: {product.color}
+                  Колір: {product.color || 'Не вибрано'}
                 </p>
-                <form className='modalSelectSize'>
-                <label  htmlFor="Size" >Розмір/Довжина:</label>
-                <select className='modalSelect'
-                  id="Size"
-                  value={product.size}
-                  onChange={(e) => handleSizeChange(product.id, product.size, e.target.value)}
-                >
-                  <option value="0">- розмір/довжина -</option>
-                  <option value="42-46/100">42-46/100 см</option>
-                  <option value="42-46/120">42-46/120 см</option>
-                  <option value="48-50/100">48-50/100 см</option>
-                  <option value="48-50/120">48-50/120 см</option>
-                  <option value="52-54/100">52-54/100 см</option>
-                  <option value="52-54/120">52-54/120 см</option>
-                </select>
-                </form>
+                <p>Розмір/Довжина: {product.size|| 'Не вибрано' }</p>
+               
 
                 <p className="shoppingList-quantity">
                   Кількість:
@@ -198,14 +154,12 @@ export const ShoppingList = ({ modalOpen, modalClose }) => {
                   {product.quantity || 1}{' '}
                   <AddCircleIcon onClick={() => handleAddToCart(product.id,product.size)} />
                   <span className="shoppingList-productPrice">
-                  {product.size === "52-54/100" || product.size === "52-54/120" ?
-  (210 + product.todayPrice * (product.quantity || 1)) :
-  (product.todayPrice * (product.quantity || 1))} грн.
+                  {product.price * (product.quantity || 1)} грн.
 
                   </span>
                   <DeleteOutlineIcon
                     className="shoppingList-deleteIcon"
-                    onClick={() => handleDeleteProduct(product.id, product.size)}
+                    onClick={() => handleDeleteProduct(product.id)}
                   />
                 </p>
               </div>
