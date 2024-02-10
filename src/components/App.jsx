@@ -13,7 +13,7 @@ export const App = () => {
           <Route path="/product/:id" element={<Products />} />
         </Routes>
       </div>
-      0
+    
     </>
   );
 };

@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -31,12 +31,15 @@ export const ProductCard = ({ modalOpen }) => {
 
     setProductColor(selectedColor);
   };
-
+  let price = selectedProduct.todayPrice;
+  if (productSize === '52-54/100' || productSize === '52-54/120') {
+    price += 210;
+  }
   const handleAddPRoduct = () => {
     const productToAdd = {
       id: `${selectedProduct.id}-${productColor.id}-${productSize}`,
       type: selectedProduct.type,
-      price: selectedProduct.todayPrice,
+      price: price,
       color: productColor.colorName,
       size: productSize,
       quantity: 1,
@@ -62,79 +65,95 @@ export const ProductCard = ({ modalOpen }) => {
 
   return (
     <div>
-      <Link to={`/`}>
+      <Link className="backLink" to={`/`}>
         <ArrowBackIcon fontSize="large" />
       </Link>
-      <h3>{selectedProduct.type}</h3>
+      <div className="productCard">
+        <h3 className="productType">Куртка "{selectedProduct.type}"</h3>
 
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        loop={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {selectedProduct &&
-          selectedProduct.colorsImg.map(slide => (
-            <SwiperSlide key={slide.id}>
-              {' '}
-              <img className="reviews-img" src={slide.img} alt="Колір куртки" />
-              <p>{slide.colorName}</p>
-            </SwiperSlide>
-          ))}
-      </Swiper>
-      <p>{selectedProduct?.price} грн</p>
-      <p>{selectedProduct?.todayPrice} грн</p>
-      <form action="">
-        {selectedProduct && (
-          <div>
-            <label htmlFor="Size">Оберіть колір:</label>
-            <select
-              onChange={handleColorChange}
-              id="Color"
-              value={selectedProduct.colorsImg.colorName}
-            >
-              <option value="0">- колір -</option>
-              {selectedProduct.colorsImg.map(color => (
-                <option key={color.id} value={color.id}>
-                  {color.colorName}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          loop={true}
+          modules={[Autoplay, Navigation]}
+          className="productCardSwiper"
+        >
+          {selectedProduct &&
+            selectedProduct.colorsImg.map(slide => (
+              <SwiperSlide key={slide.id}>
+                {' '}
+                <img
+                  className="reviews-img"
+                  src={slide.img}
+                  alt="Колір куртки"
+                />
+                <p className="productCardSwiperColor">{slide.colorName}</p>
+              </SwiperSlide>
+            ))}
+        </Swiper>
+        <p className="price">{selectedProduct?.price} грн</p>
+        <p className="priceText">
+          Ціна сьогодні:<span className="todayPrice">{price} грн</span>
+        </p>
+        <div className="productOptions">
+          {selectedProduct && (
+            <div>
+              <label htmlFor="Size">Оберіть колір:</label>
+              <select
+                className="optionSelect"
+                onChange={handleColorChange}
+                id="Color"
+                value={selectedProduct.colorsImg.colorName}
+              >
+                <option value="0">- колір -</option>
+                {selectedProduct.colorsImg.map(color => (
+                  <option key={color.id} value={color.id}>
+                    {color.colorName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
-        {selectedProduct && (
-          <div>
-            <label htmlFor="Size">Оберіть розмір:</label>
-            <select
-              onChange={event => setProductSize(event.target.value)}
-              id="Size"
-              value={selectedProduct.size}
-            >
-              <option value="0">- розмір/довжина -</option>
-              {selectedProduct.sizes.map((size, index) => (
-                <option key={index} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-      </form>
-      <button onClick={handleAddPRoduct}>Оформити замовлення</button>
+          {selectedProduct && (
+            <div>
+              <label htmlFor="Size">Оберіть розмір:</label>
+              <select
+                className="optionSelect"
+                onChange={event => setProductSize(event.target.value)}
+                id="Size"
+                value={selectedProduct.size}
+              >
+                <option value="0">- розмір/довжина -</option>
+                {selectedProduct.sizes.map((size, index) => (
+                  <option key={index} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+        </div>
+        <button className="productCardButton" onClick={handleAddPRoduct}>
+          Оформити замовлення
+        </button>
 
-      <p>{selectedProduct && selectedProduct.aboutTitle}</p>
-      <div>{selectedProduct && selectedProduct.aboutText}</div>
-      <p>Заміри виробу</p>
-      <div>{selectedProduct?.sizeTable}</div>
-      <button onClick={handleAddPRoduct}>
-  Оформити замовлення
-</button>
+        <p className="aboutTitle">
+          {selectedProduct && selectedProduct.aboutTitle}
+        </p>
+        <div className="aboutText">
+          {selectedProduct && selectedProduct.aboutText}
+        </div>
+        <p className="sizeTitle">Заміри виробу</p>
+        <div>{selectedProduct?.sizeTable}</div>
+        <button className="productCardButton" onClick={handleAddPRoduct}>
+          Оформити замовлення
+        </button>
+      </div>
     </div>
   );
 };

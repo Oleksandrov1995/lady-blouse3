@@ -3,7 +3,7 @@
   transform: translateX(-50%);
   left: 50%;
   top: 7%;
-  width: 320px;
+  width: 300px;
   max-height: 85%;
   overflow-y: auto;
   background-color: white;
@@ -11,7 +11,15 @@
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.1);
   padding: 10px 15px 40px 15px
 }
-
+.modalLink{
+  position: absolute;
+  top: 15px;
+  display: flex;
+  opacity: 20%;
+}
+.modalLinkText{
+ font-size: smaller;
+}
 .modalButtonClose {
   display: block;
   margin-left: auto;
@@ -19,6 +27,7 @@
 }
 
 .shoppingList-title {
+  margin-top: 30px;
   margin-bottom: 20px;
   text-align: center;
 }
@@ -26,12 +35,13 @@
 .shoppingList-product {
   border-bottom: 1px solid #ccc;
   padding: 15px 0;
+  margin-bottom: 85px;
 }
 
 .shoppingList-productName {
   font-weight: bold;
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .shoppingList-quantity {

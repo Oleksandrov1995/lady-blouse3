@@ -10,7 +10,8 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { sendMessage } from 'utilities/sendMessage';
-
+import { Link } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export const ShoppingList = ({ modalOpen, modalClose }) => {
   const [products, setProducts] = useState([]);
@@ -130,20 +131,25 @@ export const ShoppingList = ({ modalOpen, modalClose }) => {
         className={'modal'}
       >
         <Box className={'modalBox'}>
+        <Link className="modalLink" to={`/`}>
+        <ArrowBackIcon fontSize="small" onClick={handleModalClose} />
+        <p className="modalLinkText">на головну</p>
+      </Link>
           <AiOutlineCloseCircle
             size={30}
             onClick={handleModalClose}
             className="modalButtonClose"
           />
+          
           <h2 className="shoppingList-title">Ваше замовлення:</h2>
           {products &&
             products.map(product => (
               <div key={product.id} className="shoppingList-product">
-            <p>Куртка "{product.type}"</p>
+            <p className="shoppingList-productName">Куртка "{product.type}"</p>
                 <p className="shoppingList-productName">
                   Колір: {product.color || 'Не вибрано'}
                 </p>
-                <p>Розмір/Довжина: {product.size|| 'Не вибрано' }</p>
+                <p className="shoppingList-productName">Розмір/Довжина: {product.size|| 'Не вибрано' }</p>
                
 
                 <p className="shoppingList-quantity">
